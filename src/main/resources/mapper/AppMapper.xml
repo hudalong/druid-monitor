@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.alibaba.druid.monitor.dao.AppMapper" >
+  <resultMap id="BaseResultMap" type="com.alibaba.druid.monitor.entity.App" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+  </resultMap>
+
+  <insert id="addApp">
+     insert into app(`name`) values(#{app.name,jdbcType=VARCHAR})
+  </insert>
+
+  <select id="queryByID" resultMap="BaseResultMap">
+      select *
+      from app
+      where id=#{id,jdbcType=INTEGER}
+  </select>
+
+  <select id="getAll" resultMap="BaseResultMap">
+     select * from app;
+  </select>
+</mapper>
